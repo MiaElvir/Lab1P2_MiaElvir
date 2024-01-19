@@ -54,6 +54,7 @@ public class Lab1P2_MiaElvir {
                     }
                     Date fechanueva = new Date(fechaActual.getYear()-fechaFinal_user.getYear(), fechaActual.getMonth()-fechaFinal_user.getMonth(), fechaActual.getDate()-fechaFinal_user.getDate()); 
                     
+                    
                     System.out.println("Ingrese su correo electronico con uno de los siguientes dominios\n- gmail - outlook - yahoo - icloud - protonmail"
                             + "- fastmail -");
                     String correoUser = papoy.next(); 
