@@ -121,7 +121,7 @@ public class Lab1P2_MiaElvir {
     }
     
     public static boolean ValidacionPass(String contra){
-        String regex = "^(?=.[a-z])(?=.[A-Z])(?=.\\d)(?=.[!\\?<>$%]).{8,}$";
+        String regex = "^[a-zA-Z0-9._%&$+-?<>!]{8,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(contra);
         return matcher.matches();
