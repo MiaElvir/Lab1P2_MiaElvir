@@ -52,6 +52,7 @@ public class Lab1P2_MiaElvir {
                         System.out.println("No esta en el rango de edad para crear un Usuario");
                         break; 
                     }
+                    Date fechanueva = new Date(fechaActual.getYear()-fechaFinal_user.getYear(), fechaActual.getMonth()-fechaFinal_user.getMonth(), fechaActual.getDate()-fechaFinal_user.getDate()); 
                     
                     System.out.println("Ingrese su correo electronico con uno de los siguientes dominios\n- gmail - outlook - yahoo - icloud - protonmail"
                             + "- fastmail -");
@@ -62,10 +63,10 @@ public class Lab1P2_MiaElvir {
                     }
                     System.out.println("Ingrese su contraseña: ");
                     String contraUser = papoy.next(); 
-                    while (ValidacionPass(contraUser) == false){
-                        System.out.println("La contraseña no es valida\nVuelva a Ingresarla: ");
-                        contraUser = papoy.next();
-                    }
+//                    while (ValidacionPass(contraUser) == false){
+//                        System.out.println("La contraseña no es valida\nVuelva a Ingresarla: ");
+//                        contraUser = papoy.next();
+//                    }
                     
                     
 //                    if (ValidacionEmail(correoUser) == true){
@@ -78,41 +79,32 @@ public class Lab1P2_MiaElvir {
 //                    }else{
 //                        System.out.println("El correo no es admitido\nVuelvalo a Ingresar: ");
 //                        correoUser = papoy.next(); 
-                     
+                     Usuarios.add(new Usuario(nombreUser, apellidoUser, fechanueva, correoUser, contraUser)); 
                     break; 
                 case 2: 
+                    System.out.println("--- Listado ---");
+                    for (int i = 0; i < Usuarios.size(); i++) {
+                        Usuario impre = Usuarios.get(i); 
+                        System.out.println((i+1)+". "+impre.toString());
+                    }
                     break; 
                 case 3: 
+                    for (int i = 0; i < Usuarios.size(); i++) {
+                        Usuario impre = Usuarios.get(i); 
+                        if (impre.getCorreoElectronico().contains("gmail")){
+                            
+                        }
+                    }
                     break; 
                 
                     
             }//fin switch
+            System.out.println("--- MENU ---\n1. Registrar Usuario\n2. Listar todo\n3. Listar por dominio\n4. Salir\nIngrese su eleccion: ");
+            elecUser = papoy.nextInt(); 
         
         }//fin While   
     }//fin main
     
-    public static void AgregarUsuario(){
-    
-    
-    }
-    
-    public static int [] Edad(String fecha[], String Actual[]){
-        int [] temp = new int [3]; 
-        int diaUser = Integer.parseInt(fecha[0]); 
-        int mesUser = Integer.parseInt(fecha[1])-1; 
-        int añoUser = Integer.parseInt(fecha[2]); 
-        int dia = Integer.parseInt(Actual[0]); 
-        int mes = Integer.parseInt(Actual[1]); 
-        int año = Integer.parseInt(Actual[2]); 
-        temp[2] = Math.abs(año - añoUser); 
-        temp[1] = Math.abs(mes - mesUser); 
-        temp[0] = Ma; 
-        
-         
-         
-        
-        return temp; 
-    }
     
     public static boolean ValidacionEmail(String correo){
         String regex = "^[a-zA-Z0-9._%&$+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
