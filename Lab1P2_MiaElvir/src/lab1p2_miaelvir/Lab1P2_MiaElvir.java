@@ -92,9 +92,16 @@ public class Lab1P2_MiaElvir {
                     for (int i = 0; i < Usuarios.size(); i++) {
                         Usuario impre = Usuarios.get(i); 
                         if (impre.getCorreoElectronico().contains("gmail")){
-                            
+                            System.out.println(impre.toString());
                         }
                     }
+                    for (int i = 0; i < Usuarios.size(); i++) {
+                        Usuario impre = Usuarios.get(i); 
+                        if (impre.getCorreoElectronico().contains("outlook")){
+                            System.out.println(impre.toString());
+                        }
+                    }
+                    
                     break; 
                 
                     
