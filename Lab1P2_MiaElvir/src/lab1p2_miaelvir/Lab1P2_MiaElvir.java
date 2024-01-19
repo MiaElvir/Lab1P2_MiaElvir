@@ -1,20 +1,104 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package lab1p2_miaelvir;
 
-/**
- *
- * @author Usuario
- */
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import java.util.Scanner;
+import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
 public class Lab1P2_MiaElvir {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    static Scanner papoy = new Scanner(System.in); 
+    static ArrayList<Usuario> Usuarios = new ArrayList<>(); 
+    
+    public static void main(String[] args) throws ParseException {
+       
+        System.out.println("--- MENU ---\n1. Registrar Usuario\n2. Listar todo\n3. Listar por dominio\n4. Salir\nIngrese su eleccion: ");
+        int elecUser = papoy.nextInt(); 
+        
+        while (elecUser > 0 && elecUser < 5){
+        
+            switch (elecUser){
+                case 1: 
+                    System.out.println("\n---  Registrar Usuario ---\nIngrese su nombre: ");
+                    String nombreUser = papoy.next(); 
+                    System.out.println("Ingrese su apellido: ");
+                    String apellidoUser = papoy.next(); 
+                    System.out.println("Ingrese su fecha de nacimiento en el formato (dd/mm/yyyy): ");
+                    String fechaInicial = papoy.next(); 
+                    
+                    String [] fecha_user = fechaInicial.split("/"); 
+                    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    Date fechaFinal_user = df.parse(fechaInicial); 
+                    
+                    
+                    Date fechaActual = new Date(); 
+                    /*
+                    int fechanuevadia = fechaActual.getDay()-fechafinal.getday();
+                   
+                    
+                    
+                    */
+                    SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yyyy"); 
+                    String fechaHoy = df2.format(fechaActual);
+                    String [] fechaA = fechaHoy.split("/"); 
+                    if ((fechaActual.getYear()-fechaFinal_user.getYear())<12){
+                        System.out.println("No esta en el rango de edad para crear un Usuario");
+                        break; 
+                    }
+                    
+                    System.out.println("Ingrese su correo electronico con uno de los siguientes dominios\n- gmail - outlook - yahoo - icloud - protonmail"
+                            + "- fastmail -");
+                    String correoUser = papoy.next(); 
+                    while (ValidacionEmail(correoUser) == false){
+                        System.out.println("Algun caracter no entra en el rango de caracteres necesarios\nVuelva a Ingresarlo: ");
+                        correoUser = papoy.next(); 
+                    }
+                    System.out.println("Ingrese su contraseña: ");
+                    String passUser = papoy.next(); 
+                    break; 
+                case 2: 
+                    break; 
+                case 3: 
+                    break; 
+                
+                    
+            }//fin switch
+        
+        }//fin While   
+    }//fin main
+    
+    public static void AgregarUsuario(){
+    
+    
     }
     
-}
+    public static int [] Edad(String fecha[], String Actual[]){
+        int [] temp = new int [3]; 
+        int diaUser = Integer.parseInt(fecha[0]); 
+        int mesUser = Integer.parseInt(fecha[1])-1; 
+        int añoUser = Integer.parseInt(fecha[2]); 
+        int dia = Integer.parseInt(Actual[0]); 
+        int mes = Integer.parseInt(Actual[1]); 
+        int año = Integer.parseInt(Actual[2]); 
+        temp[2] = año - añoUser; 
+        temp[1] = mes - mesUser; 
+         
+        
+        return temp; 
+    }
+    
+    public static boolean ValidacionEmail(String correo){
+        String regex = "^[a-zA-Z0-9._%&$+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(correo);
+        return matcher.matches();
+    }
+    
+}//fin clase
