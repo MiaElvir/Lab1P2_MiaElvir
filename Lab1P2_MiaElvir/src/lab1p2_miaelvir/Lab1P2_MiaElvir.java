@@ -56,12 +56,33 @@ public class Lab1P2_MiaElvir {
                     System.out.println("Ingrese su correo electronico con uno de los siguientes dominios\n- gmail - outlook - yahoo - icloud - protonmail"
                             + "- fastmail -");
                     String correoUser = papoy.next(); 
-                    while (ValidacionEmail(correoUser) == false){
-                        System.out.println("Algun caracter no entra en el rango de caracteres necesarios\nVuelva a Ingresarlo: ");
+                    
+                    if (ValidacionEmail(correoUser) == true){
+                        if (correoUser.substring(correoUser.indexOf("@")).contains("gmail") || correoUser.substring(correoUser.indexOf("@")).contains("outlook")
+                                || correoUser.substring(correoUser.indexOf("@")).contains("yahoo") || correoUser.substring(correoUser.indexOf("@")).contains("icloud")
+                                || correoUser.substring(correoUser.indexOf("@")).contains("protonmail") || correoUser.substring(correoUser.indexOf("@")).contains("fastmail")){
+                            System.out.println("Ingrese su contraseña: ");
+                            String passUser = papoy.next(); 
+                        }
+                    }else{
+                        System.out.println("El correo no es admitido\nVuelvalo a Ingresar: ");
                         correoUser = papoy.next(); 
+                        
                     }
-                    System.out.println("Ingrese su contraseña: ");
-                    String passUser = papoy.next(); 
+                    boolean valido = false;
+                    while (valido == false){
+                        if (ValidacionEmail(correoUser) == true){
+                            valido = true; 
+                        }else{
+                            System.out.println("El correo no es valido\nVuelvalo a Ingresar");
+                            correoUser = papoy.next(); 
+
+                        }
+                    }
+                    
+                    
+//                    System.out.println("Ingrese su contraseña: ");
+//                    String passUser = papoy.next(); 
                     break; 
                 case 2: 
                     break; 
@@ -90,6 +111,7 @@ public class Lab1P2_MiaElvir {
         temp[2] = año - añoUser; 
         temp[1] = mes - mesUser; 
          
+         
         
         return temp; 
     }
@@ -98,6 +120,13 @@ public class Lab1P2_MiaElvir {
         String regex = "^[a-zA-Z0-9._%&$+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(correo);
+        return matcher.matches();
+    }
+    
+    public static boolean ValidacionPass(String contra){
+        String regex = "^(?=.[a-z])(?=.[A-Z])(?=.\\d)(?=.[!\\?<>$%]).{8,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(contra);
         return matcher.matches();
     }
     
