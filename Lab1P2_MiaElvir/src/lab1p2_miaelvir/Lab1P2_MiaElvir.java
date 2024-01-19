@@ -22,7 +22,7 @@ public class Lab1P2_MiaElvir {
         System.out.println("--- MENU ---\n1. Registrar Usuario\n2. Listar todo\n3. Listar por dominio\n4. Salir\nIngrese su eleccion: ");
         int elecUser = papoy.nextInt(); 
         
-        while (elecUser > 0 && elecUser < 5){
+        while (elecUser > 0 && elecUser < 4){
         
             switch (elecUser){
                 case 1: 
@@ -98,6 +98,30 @@ public class Lab1P2_MiaElvir {
                     for (int i = 0; i < Usuarios.size(); i++) {
                         Usuario impre = Usuarios.get(i); 
                         if (impre.getCorreoElectronico().contains("outlook")){
+                            System.out.println(impre.toString());
+                        }
+                    }
+                    for (int i = 0; i < Usuarios.size(); i++) {
+                        Usuario impre = Usuarios.get(i); 
+                        if (impre.getCorreoElectronico().contains("yahoo")){
+                            System.out.println(impre.toString());
+                        }
+                    }
+                    for (int i = 0; i < Usuarios.size(); i++) {
+                        Usuario impre = Usuarios.get(i); 
+                        if (impre.getCorreoElectronico().contains("icloud")){
+                            System.out.println(impre.toString());
+                        }
+                    }
+                    for (int i = 0; i < Usuarios.size(); i++) {
+                        Usuario impre = Usuarios.get(i); 
+                        if (impre.getCorreoElectronico().contains("protonmail")){
+                            System.out.println(impre.toString());
+                        }
+                    }
+                    for (int i = 0; i < Usuarios.size(); i++) {
+                        Usuario impre = Usuarios.get(i); 
+                        if (impre.getCorreoElectronico().contains("fastmail")){
                             System.out.println(impre.toString());
                         }
                     }
