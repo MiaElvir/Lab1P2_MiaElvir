@@ -56,33 +56,29 @@ public class Lab1P2_MiaElvir {
                     System.out.println("Ingrese su correo electronico con uno de los siguientes dominios\n- gmail - outlook - yahoo - icloud - protonmail"
                             + "- fastmail -");
                     String correoUser = papoy.next(); 
-                    
-                    if (ValidacionEmail(correoUser) == true){
-                        if (correoUser.substring(correoUser.indexOf("@")).contains("gmail") || correoUser.substring(correoUser.indexOf("@")).contains("outlook")
-                                || correoUser.substring(correoUser.indexOf("@")).contains("yahoo") || correoUser.substring(correoUser.indexOf("@")).contains("icloud")
-                                || correoUser.substring(correoUser.indexOf("@")).contains("protonmail") || correoUser.substring(correoUser.indexOf("@")).contains("fastmail")){
-                            System.out.println("Ingrese su contraseña: ");
-                            String passUser = papoy.next(); 
-                        }
-                    }else{
-                        System.out.println("El correo no es admitido\nVuelvalo a Ingresar: ");
-                        correoUser = papoy.next(); 
-                        
+                    while (ValidacionEmail(correoUser) == false){
+                        System.out.println("El correo no es valido\nVuelva a Ingresarlo: ");
+                        correoUser = papoy.next();
                     }
-                    boolean valido = false;
-                    while (valido == false){
-                        if (ValidacionEmail(correoUser) == true){
-                            valido = true; 
-                        }else{
-                            System.out.println("El correo no es valido\nVuelvalo a Ingresar");
-                            correoUser = papoy.next(); 
-
-                        }
+                    System.out.println("Ingrese su contraseña: ");
+                    String contraUser = papoy.next(); 
+                    while (ValidacionPass(contraUser) == false){
+                        System.out.println("La contraseña no es valida\nVuelva a Ingresarla: ");
+                        contraUser = papoy.next();
                     }
                     
                     
-//                    System.out.println("Ingrese su contraseña: ");
-//                    String passUser = papoy.next(); 
+//                    if (ValidacionEmail(correoUser) == true){
+//                        if (correoUser.substring(correoUser.indexOf("@")).contains("gmail") || correoUser.substring(correoUser.indexOf("@")).contains("outlook")
+//                                || correoUser.substring(correoUser.indexOf("@")).contains("yahoo") || correoUser.substring(correoUser.indexOf("@")).contains("icloud")
+//                                || correoUser.substring(correoUser.indexOf("@")).contains("protonmail") || correoUser.substring(correoUser.indexOf("@")).contains("fastmail")){
+//                            System.out.println("Ingrese su contraseña: ");
+//                            String passUser = papoy.next(); 
+//                        }
+//                    }else{
+//                        System.out.println("El correo no es admitido\nVuelvalo a Ingresar: ");
+//                        correoUser = papoy.next(); 
+                     
                     break; 
                 case 2: 
                     break; 
@@ -108,8 +104,10 @@ public class Lab1P2_MiaElvir {
         int dia = Integer.parseInt(Actual[0]); 
         int mes = Integer.parseInt(Actual[1]); 
         int año = Integer.parseInt(Actual[2]); 
-        temp[2] = año - añoUser; 
-        temp[1] = mes - mesUser; 
+        temp[2] = Math.abs(año - añoUser); 
+        temp[1] = Math.abs(mes - mesUser); 
+        temp[0] = Ma; 
+        
          
          
         
@@ -129,5 +127,7 @@ public class Lab1P2_MiaElvir {
         Matcher matcher = pattern.matcher(contra);
         return matcher.matches();
     }
+    
+    
     
 }//fin clase
