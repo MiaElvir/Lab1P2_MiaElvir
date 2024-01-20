@@ -62,7 +62,7 @@ public class Lab1P2_MiaElvir {
                     System.out.println("Ingrese su correo electronico con uno de los siguientes dominios\n- gmail - outlook - yahoo - icloud - protonmail"
                             + "- fastmail -");
                     String correoUser = papoy.next(); 
-                    while (ValidacionEmail(correoUser) == false){
+                    while (ValidacionEmail(correoUser) == false || repetido(correoUser, Usuarios)){
                         System.out.println("El correo no es valido\nVuelva a Ingresarlo: ");
                         correoUser = papoy.next();
                     }
@@ -161,8 +161,14 @@ public class Lab1P2_MiaElvir {
     }
     
     public static boolean repetido (String correoIngresado, ArrayList<Usuario> lista){
-        
-    
+        boolean temp = false; 
+        for (int i = 0; i < lista.size(); i++) {
+            Usuario persona = Usuarios.get(i); 
+            if (correoIngresado.equals(persona.getCorreoElectronico())){
+                temp = true; 
+            }
+        }
+        return temp;
     }
     
     
