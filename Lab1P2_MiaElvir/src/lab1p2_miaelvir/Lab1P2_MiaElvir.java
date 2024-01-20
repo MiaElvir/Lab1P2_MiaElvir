@@ -39,12 +39,6 @@ public class Lab1P2_MiaElvir {
                     
                     
                     Date fechaActual = new Date(); 
-                    /*
-                    int fechanuevadia = fechaActual.getDay()-fechafinal.getday();
-                   
-                    
-                    
-                    */
                     SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yyyy"); 
                     String fechaHoy = df2.format(fechaActual);
                     String [] fechaA = fechaHoy.split("/"); 
@@ -52,8 +46,11 @@ public class Lab1P2_MiaElvir {
                         System.out.println("No esta en el rango de edad para crear un Usuario");
                         break; 
                     }
-                   
-                    int año1 = (fechaActual.getYear()-fechaFinal_user.getYear())-1; 
+                    int año1 = (fechaActual.getYear()-fechaFinal_user.getYear())-1;
+                    if (fechaActual.getMonth()<fechaFinal_user.getMonth()){
+                        año1 = fechaActual.getYear()-fechaFinal_user.getYear();
+                    }
+//                    int año1 = (fechaActual.getYear()-fechaFinal_user.getYear())-1; 
                     int mes1 =(fechaActual.getMonth()-fechaFinal_user.getMonth())-2; 
                     int dia1 = fechaActual.getDate()-fechaFinal_user.getDate();
                    
@@ -72,12 +69,7 @@ public class Lab1P2_MiaElvir {
                         System.out.println("Contraseña no valida, Ingresar otra: ");
                         contraUser = papoy.next(); 
                     }
-//                    while (ValidacionPass(contraUser) == false){
-//                        System.out.println("La contraseña no es valida\nVuelva a Ingresarla: ");
-//                        contraUser = papoy.next();
-//                    }
-                    
-                    
+//                   
 //                    if (ValidacionEmail(correoUser) == true){
 //                        if (correoUser.substring(correoUser.indexOf("@")).contains("gmail") || correoUser.substring(correoUser.indexOf("@")).contains("outlook")
 //                                || correoUser.substring(correoUser.indexOf("@")).contains("yahoo") || correoUser.substring(correoUser.indexOf("@")).contains("icloud")
