@@ -52,8 +52,12 @@ public class Lab1P2_MiaElvir {
                         System.out.println("No esta en el rango de edad para crear un Usuario");
                         break; 
                     }
-                    Date fechanueva = new Date(fechaActual.getYear()-fechaFinal_user.getYear(), fechaActual.getMonth()-fechaFinal_user.getMonth(), fechaActual.getDate()-fechaFinal_user.getDate()); 
-                    
+                   
+                    int año1 = (fechaActual.getYear()-fechaFinal_user.getYear())-1; 
+                    int mes1 =(fechaActual.getMonth()-fechaFinal_user.getMonth())-2; 
+                    int dia1 = fechaActual.getDate()-fechaFinal_user.getDate();
+                   
+                    String Nacio = Math.abs(año1) + " años, "+Math.abs(mes1)+" meses, "+Math.abs(dia1)+" dias"; 
                     
                     System.out.println("Ingrese su correo electronico con uno de los siguientes dominios\n- gmail - outlook - yahoo - icloud - protonmail"
                             + "- fastmail -");
@@ -64,6 +68,10 @@ public class Lab1P2_MiaElvir {
                     }
                     System.out.println("Ingrese su contraseña: ");
                     String contraUser = papoy.next(); 
+                    while(ValidacionPass(contraUser) == false){
+                        System.out.println("Contraseña no valida, Ingresar otra: ");
+                        contraUser = papoy.next(); 
+                    }
 //                    while (ValidacionPass(contraUser) == false){
 //                        System.out.println("La contraseña no es valida\nVuelva a Ingresarla: ");
 //                        contraUser = papoy.next();
@@ -80,7 +88,7 @@ public class Lab1P2_MiaElvir {
 //                    }else{
 //                        System.out.println("El correo no es admitido\nVuelvalo a Ingresar: ");
 //                        correoUser = papoy.next(); 
-                     Usuarios.add(new Usuario(nombreUser, apellidoUser, fechanueva, correoUser, contraUser)); 
+                     Usuarios.add(new Usuario(nombreUser, apellidoUser, Nacio, correoUser, contraUser)); 
                     break; 
                 case 2: 
                     System.out.println("--- Listado ---");
@@ -150,6 +158,11 @@ public class Lab1P2_MiaElvir {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(contra);
         return matcher.matches();
+    }
+    
+    public static boolean repetido (String correoIngresado, ArrayList<Usuario> lista){
+        
+    
     }
     
     

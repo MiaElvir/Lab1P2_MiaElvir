@@ -7,11 +7,11 @@ public class Usuario {
     
     String nombre; 
     String Apellido; 
-    Date fechaDeNacimiento; 
+    String fechaDeNacimiento; 
     String correoElectronico; 
     String contraseña; 
 
-    public Usuario(String nombre, String Apellido, Date fechaDeNacimiento, String correoElectronico, String contraseña) {
+    public Usuario(String nombre, String Apellido, String fechaDeNacimiento, String correoElectronico, String contraseña) {
         this.nombre = nombre;
         this.Apellido = Apellido;
         this.fechaDeNacimiento = fechaDeNacimiento;
@@ -38,11 +38,11 @@ public class Usuario {
         this.Apellido = Apellido;
     }
 
-    public Date getFechaDeNacimiento() {
+    public String getFechaDeNacimiento() {
         return fechaDeNacimiento;
     }
 
-    public void setFechaDeNacimiento(Date fechaDeNacimiento) {
+    public void setFechaDeNacimiento(String fechaDeNacimiento) {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
@@ -64,7 +64,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Nombre: " + nombre + "| Apellido: " + Apellido + "| Fecha De Nacimiento: " + fechaDeNacimiento + "| Correo Electronico: "
+        return "Nombre: " + nombre + "| Apellido: " + Apellido + "| Edad de Usuario: " + fechaDeNacimiento + "| Correo Electronico: "
                 + "" + correoElectronico + "| contrase\u00f1a: " + contraseña;
     }
     
